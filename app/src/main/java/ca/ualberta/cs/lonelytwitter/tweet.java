@@ -60,4 +60,6 @@ public abstract class tweet {
     public void setIsImportant(boolean isImportant) {
         this.isImportant = isImportant;
     }
+
+
 }
