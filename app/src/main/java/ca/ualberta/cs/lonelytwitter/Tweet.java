@@ -5,6 +5,11 @@ import java.util.Date;
 
 /**
  * Created by romansky on 1/12/16.
+ * THe end all, the be all, this is a motherfing tweet.
+ * @author kou- Various
+ * @see Tweetable
+ * @see TweetCompare
+ * @see TweetList
  */
 public abstract class Tweet {
     protected Date date;
@@ -17,6 +22,11 @@ public abstract class Tweet {
         this.message = message;
     }
 
+    /**
+     * The tweet that tweets. Use this to tweet
+     * @param message This is a message.
+     *
+     */
     public Tweet(String message) {
         this.message = message;
         this.date = new Date();

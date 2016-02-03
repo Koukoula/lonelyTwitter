@@ -7,6 +7,11 @@ import java.util.List;
 /**
  * Created by koukoula on 1/12/16.
  */
+
+/**
+ * AN UNUSED VERSION OF TWEET
+ * @deprecated
+ */
 public abstract class tweet {
     protected Date date;
     protected String message;

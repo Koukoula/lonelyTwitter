@@ -15,6 +15,7 @@ import java.util.Date;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,18 +26,77 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+
+/**
+ * the main activity for a small personal Twitter app to capture, notes and comments
+ * <p><It saves the input tweets in the json files./p>
+ *     @since 1.2.1
+ *     @see LonelyTwitterActivity for more information.
+ *     @author: Various,
+ *
+ */
 public class LonelyTwitterActivity extends Activity {
+	public ArrayList<String> listOfitems;
+	static final String GENERAL_FILE_NAME = "fileName.json";
+
+	private int calculateTweetSize(){
+		return -1;
+	}
+	private String removeStopWords(String text){
+		return "";
+	}
+	private void startSecondActivity(Intent intent){
+		//
+	}
+	 public String someMethod(String s){
+		 return "";
+	 }
+	public boolean evaluateOtherActivity(Intent intent){
+		int count = 0;
+		String s ="";
+		Intent intent1 = new Intent();
+		String expression1="",expression2 = "",expression3 = "",expression4 = "";
+		startSecondActivity(intent1);
+		String S = someMethod(expression1 + expression2 + expression3 +
+								expression4);
+
+		someMethod(expression1 + expression2 + expression3 + expression4);
+		//for
+		try {
+			int a = 1;
+			int b = 2;
+			if (a < 2) {
+				someMethod("First choice");
+			} else {
+				someMethod("Second choice");
+			}
+
+			while (1 < 2) {
+				int j = 0;
+			}
+		}
+		catch (Exception e){}
+		return true;
+	}
 
 	private static final String FILENAME = "file.sav";
+	/**
+	 * The body text.
+	 */
 	private EditText bodyText;
+
 	private ListView oldTweetsList;
 	
 	/** Called when the activity is first created. */
+	/**
+	 * list of all tweets.
+	 */
 	private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 	private ArrayAdapter<Tweet> adapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
@@ -123,43 +183,4 @@ public class LonelyTwitterActivity extends Activity {
 			throw new RuntimeException();
 		}
 	}
-
-	/*private String[] loadFromFile() {
-		ArrayList<String> tweets = new ArrayList<String>();
-		try {
-			FileInputStream fis = openFileInput(FILENAME);
-			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-			String line = in.readLine();
-			while (line != null) {
-				tweets.add(line);
-				line = in.readLine();
-			}
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return tweets.toArray(new String[tweets.size()]);
-	}
-	
-	private void saveInFile(String text, Date date) {
-		try {
-			FileOutputStream fos = openFileOutput(FILENAME,
-					Context.MODE_APPEND);
-			fos.write(new String(date.toString() + " | " + text)
-					.getBytes());
-			fos.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	*/
-
 }

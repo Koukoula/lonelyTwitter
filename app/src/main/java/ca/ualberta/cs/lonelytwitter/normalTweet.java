@@ -6,6 +6,10 @@ import java.util.List;
 /**
  * Created by koukoula on 1/12/16.
  */
+/**
+ * outdated
+ * @deprecated
+ */
 public class normalTweet extends tweet {
     public normalTweet(Date date, String message, List listOfMoods) {
         super(date, message, listOfMoods);

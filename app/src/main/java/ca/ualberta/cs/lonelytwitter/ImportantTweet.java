@@ -5,6 +5,14 @@ import java.util.Date;
 /**
  * Created by romansky on 1/12/16.
  */
+
+/**
+ * A type of tweet that is intrinsically
+ * more important than other tweets.
+ * @author Some TA.
+ * @since whenever.
+ * @see Tweet
+ */
 public class ImportantTweet extends Tweet implements Tweetable {
     @Override
     public Boolean isImportant() {

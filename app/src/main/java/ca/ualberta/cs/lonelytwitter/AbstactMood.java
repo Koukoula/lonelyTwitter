@@ -5,6 +5,12 @@ import java.util.Date;
 /**
  * Created by koukoula on 1/12/16.
  */
+
+/**
+ * An abstract class for moods.
+ * @author: Some TA.
+ * @see: Frustrated, StillFrustrated
+ */
 public abstract class AbstactMood {
     protected Date date;
 
