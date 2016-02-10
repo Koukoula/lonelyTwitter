@@ -2,11 +2,14 @@ package ca.ualberta.cs.lonelytwitter;
 
 import android.app.Activity;
 import android.app.Instrumentation;
+import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
+import android.test.ViewAsserts;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by sajediba on 2/8/16.
@@ -37,7 +40,20 @@ public class LonelyTwitterActivityUITest extends ActivityInstrumentationTestCase
 
     //
     //
+    @UiThreadTest
+    public void testMakeTweet(){
+        LonelyTwitterActivity lta = (LonelyTwitterActivity) getActivity();
+        int oldLength = lta.getAdapter().getCount();
+        makeTweet("Test String");
+        ArrayAdapter<Tweet> arrayAdapter = lta.getAdapter();
+        assertEquals(oldLength + 1, arrayAdapter.getCount());
 
+        assertTrue("Dud you add a Tweet object?", arrayAdapter.getItem(arrayAdapter.getCount() - 1) instanceof Tweet);
+
+        Tweet tweet = arrayAdapter.getItem(arrayAdapter.getCount()-1);
+        assertEquals("This is not the text we expected!", tweet.getMessage(), "test string");
+    }
     //
     //
+
 }
