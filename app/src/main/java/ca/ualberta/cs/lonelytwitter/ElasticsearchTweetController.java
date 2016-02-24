@@ -30,7 +30,29 @@ public class ElasticsearchTweetController {
             ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 
             //NOTE: ASSUMING ONLY FIRST SEARCH TERM WILL BE USED
-            Search search = new Search.Builder(searchStrings[0]).addIndex("testing").addType("tweet").build();
+            String query = "{\n" +
+                    "    \"query\": {\n" +
+                    "        \"filtered\" : {\n" +
+                    "            \"query\" : {\n" +
+                    "                \"query_string\" : {\n" +
+                    "                    \"query\" : \"test\"\n" +
+                    "                }\n" +
+                    "            },\n" +
+                    "            \"filter\" : {\n" +
+                    "                \"term\" : { \"user\" : \"ki\" }\n" +
+                    "            }\n" +
+                    "        }\n" +
+                    "    }\n" +
+                    "}";
+
+            //query = "{\"from\" : 0, \"size\""
+            //I HAVE NO IDEA HOW THIS WORKS
+            Search search = new Search.Builder(query)
+                    // multiple index or types can be added.
+                    .addIndex("testing")
+                    .addIndex("tweet")
+                    .build();
+           // Search search = new Search.Builder(searchStrings[0]).addIndex("testing").addType("tweet").build();
 
             try {
                 SearchResult execute= client.execute(search);

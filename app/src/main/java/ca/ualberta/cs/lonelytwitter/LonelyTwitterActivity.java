@@ -47,10 +47,28 @@ public class LonelyTwitterActivity extends Activity {
 
         bodyText = (EditText) findViewById(R.id.body);
         Button saveButton = (Button) findViewById(R.id.save);
+        Button searchButton = (Button) findViewById(R.id.save);
         oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
 
+            public void onClick(View v) {
+                String text = bodyText.getText().toString();
+                NormalTweet latestTweet = new NormalTweet(text);
+
+                tweets.add(latestTweet);
+                adapter.notifyDataSetChanged();
+
+                // TODO: Replace with Elasticsearch
+                AsyncTask<NormalTweet, Void, Void> execute = new ElasticsearchTweetController.AddTweetTask();
+                execute.execute(latestTweet);
+                //saveInFile();
+
+                setResult(RESULT_OK);
+            }
+        });
+/*
+        searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String text = bodyText.getText().toString();
                 NormalTweet latestTweet = new NormalTweet(text);
@@ -66,6 +84,7 @@ public class LonelyTwitterActivity extends Activity {
                 setResult(RESULT_OK);
             }
         });
+        */
     }
 
     @Override
